@@ -1,0 +1,10 @@
+runtime: nodejs18
+services:
+  - name: chat-app
+    type: web
+    build:
+      command: npm install
+    start:
+      command: node server.js
+    ports:
+      - 3000

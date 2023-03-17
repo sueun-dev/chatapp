@@ -29,18 +29,24 @@ wss.on('connection', (socket, req) => {
     if (message.type === 'join') {
       clientInfo.roomId = message.roomId;
       console.log(`Client ${clientId} joined room ${message.roomId}`);
+      updateUsersOnline(clientInfo.roomId);
     } else if (message.type === 'message') {
-      broadcastMessage(clientId, message.content);
+      const messageId = `${clientId}-${Date.now()}`;
+      broadcastMessage(clientId, message.content, messageId);
+    } else if (message.type === 'delete') {
+      deleteMessage(clientId, message.messageId);
     }
   });
 
   socket.on('close', () => {
     console.log('Client disconnected');
+    const roomId = clientInfo.roomId;
     clients.delete(clientId);
+    updateUsersOnline(roomId);
   });
 });
 
-function broadcastMessage(senderId, message) {
+function broadcastMessage(senderId, message, messageId) {
   const senderInfo = clients.get(senderId);
 
   if (!senderInfo || !senderInfo.roomId) {
@@ -48,8 +54,19 @@ function broadcastMessage(senderId, message) {
   }
 
   clients.forEach((clientInfo, clientId) => {
-    if (clientId !== senderId && clientInfo.roomId === senderInfo.roomId) {
-      clientInfo.socket.send(`${senderId}: ${message}`);
+    if (clientInfo.roomId === senderInfo.roomId) {
+      const messageType = (clientId === senderId) ? 'self' : 'other';
+      clientInfo.socket.send(JSON.stringify({ type: 'message', senderId: messageType, content: message, messageId: messageId }));
+    }
+  });
+}
+
+function updateUsersOnline(roomId) {
+  const usersOnline = Array.from(clients.values()).filter(client => client.roomId === roomId).length;
+
+  clients.forEach((clientInfo) => {
+    if (clientInfo.roomId === roomId) {
+      clientInfo.socket.send(JSON.stringify({ type: 'usersOnline', count: usersOnline }));
     }
   });
 }

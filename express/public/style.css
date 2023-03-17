@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #010101, #0a0a0a);
+  }
+  
+  h1 {
+    color: #1abc9c;
+    text-align: center;
+  }
+  
+  button {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+  }
+  
+  input {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  #messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #1abc9c;
+    background-color: #2c3e50;
+  }
+  
+  .outgoing {
+    display: block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+    border-radius: 15px;
+    text-align: left;
+    float: right;
+    clear: both;
+  }
+  
+  .incoming {
+    display: block;
+    background-color: #7f8c8d;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+    border-radius: 15px;
+    text-align: left;
+    float: left;
+    clear: both;
+  }
+  

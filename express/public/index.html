@@ -7,18 +7,28 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>Random Chat App</h1>
+  <h1>Hidden Chat</h1>
+  <input type="text" id="username" placeholder="Your Name" required /> <!-- Add required attribute here -->
   <button id="startChat">Start Chat</button>
   <button id="stopChat" disabled>Stop Chat</button>
   <input type="text" id="roomId" placeholder="Room ID">
+
+  <!-- Add a new div element to show the list of active chat rooms -->
+  <div id="activeRooms">
+    <h2>Active Chat Rooms</h2>
+    <ul id="roomsList"></ul>
+    <div id="roomNumber" style="color: rgb(13, 101, 179);"></div>
+  </div>
+
   <div id="chatArea" style="display:none;">
-    <div id="messages"></div>
+    <div id="messages" style="height: 300px; overflow-y: auto;"></div>
     <input type="text" id="messageInput" placeholder="Type your message here">
     <button id="sendMessage">Send</button>
     <button id="deleteMessage">Delete</button>
     <div id="usersOnline" style="color: aliceblue;">Users online: 0</div>
-    <div style="color: aliceblue;">Created by Sueun Cho</div>
   </div>
-  <script src="main.js"></script>
+  <div style="color: aliceblue;">Created by Cailyn Hyun</div>
+  <script src="ui.js"></script>
+  <script src="socketHandler.js"></script>
 </body>
 </html>

@@ -2,8 +2,8 @@ let socket = null;
 
 
 function startChat(roomId) {
-  //socket = new WebSocket('wss://port-0-chatapp-6g2llfb56c7n.sel3.cloudtype.app');
-  socket = new WebSocket('ws://localhost:3000/');
+  socket = new WebSocket('wss://port-0-chatapp-6g2llfb56c7n.sel3.cloudtype.app');
+  //socket = new WebSocket('ws://localhost:3000/');
 
   socket.addEventListener('open', () => {
     onSocketOpen();

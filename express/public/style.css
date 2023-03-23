@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #010101, #0a0a0a);
+    background: linear-gradient(45deg, #be4242, #c83f3f);
   }
   
   h1 {
@@ -65,3 +65,9 @@ body {
     clear: both;
   }
   
+  .username {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #000000;
+    margin-right: 5px;
+  }

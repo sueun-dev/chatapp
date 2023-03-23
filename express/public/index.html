@@ -18,6 +18,9 @@
     <h2>Active Chat Rooms</h2>
     <ul id="roomsList"></ul>
     <div id="roomNumber" style="color: rgb(13, 101, 179);"></div>
+    <!-- Add a new button element to refresh the list of active chat rooms -->
+<button id="refreshRoomsListBtn" onclick="refreshRoomsList()">Refresh Rooms List</button>
+
   </div>
 
   <div id="chatArea" style="display:none;">
@@ -26,6 +29,7 @@
     <button id="sendMessage">Send</button>
     <button id="deleteMessage">Delete</button>
     <div id="usersOnline" style="color: aliceblue;">Users online: 0</div>
+    
   </div>
   <div style="color: aliceblue;">Created by Cailyn Hyun</div>
   <script src="ui.js"></script>

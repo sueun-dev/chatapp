@@ -33,20 +33,9 @@ messageInput.addEventListener('keydown', (event) => {
   }
 });
 
-function updateRoomsList(rooms) {
-  const roomsList = document.getElementById('roomsList');
-  roomsList.innerHTML = '';
-
-  rooms.forEach((room) => {
-    const roomElement = document.createElement('li');
-    roomElement.textContent = room;
-    roomElement.addEventListener('click', () => joinRoom(room));
-    roomsList.appendChild(roomElement);
-  });
-}
-
-function updateRoomNumber(roomId) {
-  const roomNumber = document.getElementById('roomNumber');
-  roomNumber.textContent = `You are in room ${roomId}`;
+function refreshRoomsList() {
+  if (socket) {
+    socket.send(JSON.stringify({ type: 'getRooms' }));
+  }
 }
 

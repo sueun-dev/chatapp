@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Random Chat App</title>
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -10,8 +10,14 @@
   <h1>Hidden Chat</h1>
   <input type="text" id="username" placeholder="Your Name" required /> <!-- Add required attribute here -->
   <button id="startChat">Start Chat</button>
+  
+  <input type="checkbox" id="privateRoom" />
+  <label for="privateRoom">Private</label>
+
   <button id="stopChat" disabled>Stop Chat</button>
   <input type="text" id="roomId" placeholder="Room ID">
+  
+  
 
   <!-- Add a new div element to show the list of active chat rooms -->
   <div id="activeRooms">
@@ -30,8 +36,9 @@
     <button id="deleteMessage">Delete</button>
     <div id="usersOnline" style="color: aliceblue;">Users online: 0</div>
     
+    
   </div>
-  <div style="color: aliceblue;">Created by Sueun Cho</div>
+  <div style="color: aliceblue;">Created by Cailyn Hyun</div>
   <script src="ui.js"></script>
   <script src="socketHandler.js"></script>
 </body>

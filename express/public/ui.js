@@ -39,3 +39,6 @@ function refreshRoomsList() {
   }
 }
 
+function scrollToBottom() {
+  messages.scrollTop = messages.scrollHeight;
+}

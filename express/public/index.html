@@ -7,38 +7,33 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>Hidden Chat</h1>
-  <input type="text" id="username" placeholder="Your Name" required /> <!-- Add required attribute here -->
-  <button id="startChat">Start Chat</button>
-  
-  <input type="checkbox" id="privateRoom" />
-  <label for="privateRoom">Private</label>
-
-  <button id="stopChat" disabled>Stop Chat</button>
-  <input type="text" id="roomId" placeholder="Room ID">
-  
-  
-
-  <!-- Add a new div element to show the list of active chat rooms -->
-  <div id="activeRooms">
-    <h2>Active Chat Rooms</h2>
-    <ul id="roomsList"></ul>
-    <div id="roomNumber" style="color: rgb(13, 101, 179);"></div>
-    <!-- Add a new button element to refresh the list of active chat rooms -->
-<button id="refreshRoomsListBtn" onclick="refreshRoomsList()">Refresh Rooms List</button>
-
+  <div id="container">
+    <h1>Hidden Chat</h1>
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Your Name" required />
+      <input type="text" id="roomId" placeholder="Room ID">
+    </div>
+    <button id="startChat">Start Chat</button>
+    <input type="checkbox" id="privateRoom" />
+    <label for="privateRoom">Private</label>
+    <button id="stopChat" disabled>Stop Chat</button>
+    <div id="activeRooms">
+      <h2>Active Chat Rooms</h2>
+      <h3 style="font-size: 15px">1.Press refresh to find a new room.</h3>
+      <h3 style="font-size: 15px">2. You can access by pressing the room id below.</h3>
+      <a type="button" style="cursor:pointer;" id="roomsList"></a>
+      <div id="roomNumber" style="color: rgb(13, 101, 179);"></div>
+      <button id="refreshRoomsListBtn" onclick="refreshRoomsList()">Refresh Rooms List & User</button>
+    </div>
+    <div id="chatArea" style="display:none;">
+      <div id="messages" style="height: 300px; overflow-y: auto;"></div>
+      <input type="text" id="messageInput" placeholder="Type your message here">
+      <button id="sendMessage">Send</button>
+      <button id="deleteMessage">Delete</button>
+      <div id="usersOnline" style="color: aliceblue;">Users online: 0</div>
+    </div>
+    <div style="color: aliceblue;">Created by Cailyn Hyun</div>
   </div>
-
-  <div id="chatArea" style="display:none;">
-    <div id="messages" style="height: 300px; overflow-y: auto;"></div>
-    <input type="text" id="messageInput" placeholder="Type your message here">
-    <button id="sendMessage">Send</button>
-    <button id="deleteMessage">Delete</button>
-    <div id="usersOnline" style="color: aliceblue;">Users online: 0</div>
-    
-    
-  </div>
-  <div style="color: aliceblue;">Created by Cailyn Hyun</div>
   <script src="ui.js"></script>
   <script src="socketHandler.js"></script>
 </body>

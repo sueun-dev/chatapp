@@ -6,8 +6,8 @@ let currentUsername = null;
 function startChat(roomId) {
   //socket server 지정
   //ws 는 http, wss 는 https
-  socket = new WebSocket('wss://port-0-chatapp-6g2llfb56c7n.sel3.cloudtype.app');
-  //socket = new WebSocket('ws://localhost:3000/');
+  //socket = new WebSocket('wss://port-0-chatapp-6g2llfb56c7n.sel3.cloudtype.app');
+  socket = new WebSocket('ws://localhost:3000/');
 
   socket.addEventListener('open', () => {
     onSocketOpen();
@@ -39,8 +39,8 @@ function updateRoomsList(rooms) {
 
   rooms.forEach((room) => {
     const roomElement = document.createElement('li');
-    roomElement.textContent = room;
-    roomElement.addEventListener('click', () => joinRoom(room, currentUsername));
+    roomElement.textContent = `${room.id} (${room.usersCount})`; // Display the number of users in the room
+    roomElement.addEventListener('click', () => joinRoom(room.id, currentUsername, room.isPrivate));
     roomsList.appendChild(roomElement);
   });
 }
@@ -76,7 +76,7 @@ function joinRoom(roomId, currentUsername, isPrivate) {
         type: "join",
         roomId: roomId,
         username: currentUsername,
-        isPrivate: isPrivate, // Send the isPrivate flag
+        isPrivate: isPrivate,
       })
     );
     currentRoomId = roomId;
@@ -94,8 +94,8 @@ function sendMessage() {
       //{"type":"message","content":"eryg","username":"123"} < 이런식으로 저장
       JSON.stringify({ type: 'message', content: message, username: currentUsername })
     ); // Send the username with the message
-    console.log("chat2")
     messageInput.value = '';
+    messageInput.focus();
   }
 }
 

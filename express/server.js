@@ -27,12 +27,12 @@ wss.on('connection', (socket, req) => {
   const clientInfo = {
     socket: socket,
     roomId: null,
-    maxUsers: null, // Add a maxUsers property
   };
   
 
   clients.set(clientId, clientInfo);
 
+  //방을 변경해도 currentUsername은 유지, priavte 버튼과 stop chat 버튼만 작동 안함. 다른 버튼은 모두 여길 통해서 작동됨
   socket.on('message', (data) => {
     const message = JSON.parse(data);
     
@@ -49,7 +49,6 @@ wss.on('connection', (socket, req) => {
       clientInfo.roomId = message.roomId;
       clientInfo.username = message.username;
       clientInfo.isPrivate = message.isPrivate;
-      clientInfo.maxUsers = message.maxUsers; // Store the maxUsers value
       activeRooms.add(clientInfo.roomId);
       //추가작동
       updateUsersOnline(clientInfo.roomId);
@@ -153,7 +152,6 @@ function sendRoomsList(clientId) {
       return {
         id: roomId,
         isPrivate: roomClients.some((client) => client.isPrivate),
-        maxUsers: roomClients[0]?.maxUsers || 0, // Get the maxUsers value from the first client in the room
         usersCount: roomClients.length,
       };
     }).filter((room) => !room.isPrivate);

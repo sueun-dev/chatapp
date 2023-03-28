@@ -1,84 +1,107 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #be4242, #c83f3f);
-  }
-  
-  h1 {
-    color: #1abc9c;
-    text-align: center;
-  }
-  
-  button {
-    display: inline-block;
-    background-color: #1abc9c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #7f8c8d;
-    cursor: not-allowed;
-  }
-  
-  input {
-    display: inline-block;
-    margin: 10px;
-  }
-  
-  #messages {
-    max-height: 400px;
-    overflow-y: auto;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid #1abc9c;
-    background-color: #2c3e50;
-  }
-  
-  .outgoing {
-    display: block;
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    max-width: 70%;
-    word-wrap: break-word;
-    border-radius: 15px;
-    text-align: left;
-    float: right;
-    clear: both;
-  }
-  
-  .incoming {
-    display: block;
-    background-color: #7f8c8d;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    max-width: 70%;
-    word-wrap: break-word;
-    border-radius: 15px;
-    text-align: left;
-    float: left;
-    clear: both;
-  }
-  
-  .username {
-    font-size: 0.8em;
-    font-weight: bold;
-    color: #000000;
-    margin-right: 5px;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #3498db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-  .delete-btn {
-    background-color: transparent;
-    border: none;
-    color: red;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin-left: 5px;
-    padding: 0;
-  }
-  
+#container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+h1 {
+  color: #1abc9c;
+}
+
+button {
+  display: inline-block;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #16a085;
+  transform: scale(1.1);
+}
+
+button:active {
+  background-color: #117a60;
+  box-shadow: 0 2px 0 #0d6145;
+}
+
+
+input {
+  display: inline-block;
+  margin: 10px;
+}
+
+#messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #1abc9c;
+  background-color: #2c3e50;
+}
+
+.outgoing {
+  display: block;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  margin: 5px 0;
+  max-width: 70%;
+  word-wrap: break-word;
+  border-radius: 15px;
+  text-align: left;
+  float: right;
+  clear: both;
+}
+
+.incoming {
+  display: block;
+  background-color: #7f8c8d;
+  color: #fff;
+  padding: 10px;
+  margin: 5px 0;
+  max-width: 70%;
+  word-wrap: break-word;
+  border-radius: 15px;
+  text-align: left;
+  float: left;
+  clear: both;
+}
+
+.username {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #000000;
+  margin-right: 5px;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-left: 5px;
+  padding: 0;
+}

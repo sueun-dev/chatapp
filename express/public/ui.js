@@ -9,8 +9,18 @@ const usersOnline = document.getElementById('usersOnline');
 
 startChatBtn.addEventListener('click', () => {
   const roomId = document.getElementById('roomId').value.trim();
-  if (roomId) {
+  const userName = document.getElementById('username').value.trim();
+  if (roomId && userName) {
     startChat(roomId);
+  }
+  else if(!roomId && ! userName) {
+    alert("Write user name and room number")
+  }
+  else if(!roomId) {
+    alert("write your room number")
+  }
+  else {
+    alert("write your user name")
   }
 });
 

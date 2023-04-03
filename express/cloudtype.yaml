@@ -1,4 +1,4 @@
-runtime: nodejs18
+runtime: nodejs14
 services:
   - name: chat-app
     type: web

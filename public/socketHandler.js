@@ -83,28 +83,47 @@ function joinRoom(roomId, currentUsername, isPrivate) {
   }
 }
 
+let isCountingDown = false;
 
-
-//여기는 채팅창 변경해도 username 유지됨
 function sendMessage() {
   const message = messageInput.value.trim();
-  //message는 내가 입력한 값이 나오게 됨
-  if (message && socket) {
-    socket.send(
-      //{"type":"message","content":"eryg","username":"123"} < 이런식으로 저장
-      JSON.stringify({ type: 'message', content: message, username: currentUsername })
-    ); // Send the username with the message
-    messageInput.value = '';
-    messageInput.focus();
+  if (message && !isCountingDown) {
+    startCountdown(3, message);
   }
 }
 
-//버튼 눌러야 내용이 삭제됌. 드레그해서 삭제되는 부분은 아님
+function startCountdown(seconds, message) {
+  let counter = seconds;
+  sendMessageBtn.disabled = true;
+  isCountingDown = true;
+
+  const intervalId = setInterval(() => {
+    if (counter > 0) {
+      sendMessageBtn.innerText = `Send (${counter} sec)`;
+      counter--;
+    } else {
+      clearInterval(intervalId);
+      sendMessageBtn.innerText = 'Send';
+      sendMessageBtn.disabled = false;
+      isCountingDown = false;
+      autoSendMessage(message);
+    }
+  }, 1000);
+}
+
+function autoSendMessage(message) {
+  if (socket && message) {
+    socket.send(JSON.stringify({ type: 'message', content: message, username: currentUsername }));
+    messageInput.value = '';
+  }
+}
+
 function deleteMessage() {
   if (messages.lastChild && messages.lastChild.classList.contains('outgoing')) {
     messages.removeChild(messages.lastChild);
   }
 }
+
 
 // user name 잘 작동됌
 function onSocketMessage(event) {

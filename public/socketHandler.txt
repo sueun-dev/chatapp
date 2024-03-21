@@ -1,0 +1,2 @@
+const username = document.getElementById('username').value.trim();
+value는 html에서 input, textarea 등 입력 요소. trim() 함수는 문자열 양쪽 끄 공백 제거.
